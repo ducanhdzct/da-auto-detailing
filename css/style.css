@@ -1,0 +1,533 @@
+/* =========================================================
+   1. DESIGN TOKENS & RESET (BOX MODEL)
+   ========================================================= */
+:root {
+    --bg-page: #0f172a;
+    --bg-surface: #1e293b;
+    --bg-alt: #131c31;
+    --text-main: #f8fafc;
+    --text-muted: #cbd5e1;
+    --accent: #f97316;
+    --accent-hover: #ea580c;
+    --border-color: #334155;
+    --focus-ring: #38bdf8;
+    --error-color: #ef4444;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    background-color: var(--bg-page);
+    color: var(--text-main);
+    line-height: 1.6;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+/* Hien thi vien focus ro rang khi dieu huong bang ban phim (Tab) */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+    outline: 3px solid var(--focus-ring);
+    outline-offset: 3px;
+}
+
+/* =========================================================
+   2. CONTAINER & HEADER / NAVIGATION (MOBILE-FIRST)
+   ========================================================= */
+.container {
+    width: 100%;
+    max-width: 72rem;
+    margin-inline: auto;
+    padding-inline: 1rem;
+}
+
+.site-header {
+    background-color: var(--bg-surface);
+    border-bottom: 1px solid var(--border-color);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.header-inner {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    padding-block: 0.875rem;
+}
+
+.brand-logo {
+    font-weight: 800;
+    font-size: 1.125rem;
+    letter-spacing: 0.04em;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.brand-mark {
+    background-color: var(--accent);
+    color: #0f172a;
+    padding: 0.15rem 0.5rem;
+    border-radius: 4px;
+    font-weight: 900;
+}
+
+.site-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.25rem;
+}
+
+.site-nav a {
+    color: var(--text-muted);
+    font-weight: 600;
+    font-size: 0.95rem;
+    padding-block: 0.25rem;
+    border-bottom: 2px solid transparent;
+    transition: color 180ms ease, border-color 180ms ease;
+}
+
+.site-nav a:hover {
+    color: var(--text-main);
+    border-bottom-color: var(--accent);
+}
+
+/* =========================================================
+   3. HERO SECTION & BUTTONS
+   ========================================================= */
+.hero-section {
+    padding-block: 2.5rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.hero-inner {
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 1.75rem;
+}
+
+.hero-badge {
+    display: inline-block;
+    background-color: rgba(249, 115, 22, 0.15);
+    color: #fdba74;
+    border: 1px solid rgba(249, 115, 22, 0.4);
+    padding: 0.25rem 0.75rem;
+    border-radius: 999px;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+}
+
+.hero-text h1 {
+    margin: 0 0 1rem;
+    font-size: 1.75rem;
+    line-height: 1.25;
+}
+
+.hero-text p {
+    margin: 0 0 1.5rem;
+    color: var(--text-muted);
+}
+
+.hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+}
+
+.hero-media img {
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
+    border-radius: 0.75rem;
+    border: 1px solid var(--border-color);
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.75rem 1.25rem;
+    border-radius: 0.5rem;
+    font-weight: 700;
+    font-size: 0.95rem;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: background-color 180ms ease, color 180ms ease, transform 180ms ease;
+}
+
+.btn:active {
+    transform: translateY(1px);
+}
+
+.btn-primary {
+    background-color: var(--accent);
+    color: #0f172a;
+}
+
+.btn-primary:hover {
+    background-color: var(--accent-hover);
+    color: #ffffff;
+}
+
+.btn-outline {
+    border-color: var(--border-color);
+    color: var(--text-main);
+    background-color: transparent;
+}
+
+.btn-outline:hover {
+    border-color: var(--accent);
+    color: #fdba74;
+}
+
+.btn-full {
+    width: 100%;
+}
+
+/* =========================================================
+   4. SERVICE CARDS (GRID 1 COT MAC DINH)
+   ========================================================= */
+.section-block {
+    padding-block: 3rem;
+}
+
+.section-alt {
+    background-color: var(--bg-alt);
+    border-block: 1px solid var(--border-color);
+}
+
+.section-head {
+    margin-bottom: 2rem;
+}
+
+.section-head h2 {
+    margin: 0 0 0.5rem;
+    font-size: 1.5rem;
+}
+
+.section-head p {
+    margin: 0;
+    color: var(--text-muted);
+}
+
+.service-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+}
+
+.service-card {
+    min-width: 0;
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-radius: 0.75rem;
+    display: flex;
+    flex-direction: column;
+    transition: transform 180ms ease, border-color 180ms ease;
+}
+
+.service-card:hover,
+.service-card:focus-within {
+    transform: translateY(-4px);
+    border-color: var(--accent);
+}
+
+.card-thumb {
+    overflow: hidden;
+    border-top-left-radius: 0.75rem;
+    border-top-right-radius: 0.75rem;
+}
+
+.card-thumb img {
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
+}
+
+.card-body {
+    padding: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.card-body h3 {
+    margin: 0 0 0.5rem;
+    font-size: 1.2rem;
+}
+
+.card-body p {
+    margin: 0 0 1rem;
+    color: var(--text-muted);
+    font-size: 0.95rem;
+}
+
+.feature-list {
+    margin: 0 0 1.25rem;
+    padding-left: 1.25rem;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+.feature-list li {
+    margin-bottom: 0.35rem;
+}
+
+.card-link {
+    margin-top: auto;
+    color: #fdba74;
+    font-weight: 700;
+    font-size: 0.95rem;
+    overflow-wrap: anywhere;
+}
+
+.card-link:hover {
+    text-decoration: underline;
+}
+
+/* =========================================================
+   5. PRICING TABLE (RESPONSIVE WRAPPER)
+   ========================================================= */
+.table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+    border: 1px solid var(--border-color);
+    border-radius: 0.75rem;
+    background-color: var(--bg-surface);
+}
+
+.pricing-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    min-width: 32rem;
+}
+
+.pricing-table th,
+.pricing-table td {
+    padding: 0.875rem 1rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.pricing-table thead th {
+    background-color: rgba(15, 23, 42, 0.6);
+    color: #fdba74;
+    font-weight: 700;
+}
+
+.pricing-table tbody tr:last-child th,
+.pricing-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* =========================================================
+   6. CONTACT & STATIC FORM VALIDATION
+   ========================================================= */
+.contact-layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+}
+
+.contact-info h2 {
+    margin: 0 0 0.75rem;
+    font-size: 1.5rem;
+}
+
+.contact-info p {
+    margin: 0 0 1.25rem;
+    color: var(--text-muted);
+}
+
+.info-list {
+    margin: 0;
+    padding-left: 1.25rem;
+    color: var(--text-muted);
+}
+
+.info-list li {
+    margin-bottom: 0.6rem;
+}
+
+.info-list a {
+    color: #fdba74;
+    overflow-wrap: anywhere;
+}
+
+.booking-form {
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-radius: 0.75rem;
+    padding: 1.25rem;
+}
+
+.form-group {
+    margin-bottom: 1.15rem;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 0.4rem;
+    font-size: 0.95rem;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 0.7rem 0.85rem;
+    border-radius: 0.5rem;
+    border: 1px solid var(--border-color);
+    background-color: var(--bg-page);
+    color: var(--text-main);
+    font: inherit;
+}
+
+.form-group input:user-invalid,
+.form-group textarea:user-invalid {
+    border: 2px solid var(--error-color);
+}
+
+.field-help {
+    margin: 0.35rem 0 0;
+    font-size: 0.8125rem;
+    color: var(--text-muted);
+}
+
+/* =========================================================
+   7. RESULT PAGE & FOOTER
+   ========================================================= */
+.result-main {
+    padding-block: 4rem;
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+}
+
+.result-card {
+    max-width: 40rem;
+    margin-inline: auto;
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-radius: 0.75rem;
+    padding: 2rem 1.5rem;
+}
+
+.result-card h1 {
+    margin: 0 0 0.75rem;
+    font-size: 1.65rem;
+}
+
+.notice-box {
+    background-color: var(--bg-page);
+    border-left: 4px solid var(--accent);
+    padding: 1rem;
+    margin-block: 1.25rem 1.75rem;
+    border-radius: 0.35rem;
+    font-size: 0.925rem;
+    color: var(--text-muted);
+}
+
+.site-footer {
+    background-color: var(--bg-surface);
+    border-top: 1px solid var(--border-color);
+    padding-block: 1.5rem;
+    color: var(--text-muted);
+    font-size: 0.875rem;
+}
+
+.footer-inner {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+}
+
+.footer-inner p {
+    margin: 0;
+}
+
+/* =========================================================
+   8. RESPONSIVE BREAKPOINTS (B1 = 640px, B2 = 960px)
+   ========================================================= */
+
+/* B1 = 640px: Du cho cho 2 cot card (2*280 + 24 + 2*16 = 616px -> chon 640px) */
+@media (min-width: 640px) {
+    .header-inner {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .hero-text h1 {
+        font-size: 2.25rem;
+    }
+
+    .service-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .booking-form {
+        padding: 1.75rem;
+    }
+}
+
+/* B2 = 960px: Du cho cho 3 cot card (3*280 + 2*24 + 2*16 = 920px -> chon 960px) */
+@media (min-width: 960px) {
+    .hero-section {
+        padding-block: 4rem;
+    }
+
+    .hero-inner {
+        flex-direction: row;
+        align-items: center;
+        gap: 2.5rem;
+    }
+
+    .hero-text,
+    .hero-media {
+        flex: 1;
+    }
+
+    .hero-text h1 {
+        font-size: 2.65rem;
+    }
+
+    .service-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .contact-layout {
+        grid-template-columns: 1fr 1.15fr;
+        align-items: start;
+        gap: 3rem;
+    }
+
+    .footer-inner {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+}
